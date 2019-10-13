@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cell &mdash;  0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title=" 0 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html"> 0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for cell</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:mod:`cell` module</span>
+
+<span class="sd">:author: SAAL Fatma</span>
+
+<span class="sd">:date: 2018, october</span>
+
+<span class="sd">This module provides cell&#39;s primitive operations for the minesweeper game.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1">################################################</span>
+<span class="c1"># Functions for cell&#39;s management</span>
+<span class="c1">################################################</span>
+<div class="viewcode-block" id="make"><a class="viewcode-back" href="../cell.html#cell.make">[docs]</a><span class="k">def</span> <span class="nf">make</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :return: a new hidden cell of a minesweeper&#39;s grid.</span>
+<span class="sd">             existence of a bomb, number of bombs in neigh_borhood</span>
+<span class="sd">             have to be stated later.</span>
+<span class="sd">    :rtype: cell</span>
+<span class="sd">    :UC: none</span>
+<span class="sd">    :Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; cel = make()</span>
+<span class="sd">    &gt;&gt;&gt; is_bomb(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; is_hypothetic_bomb(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; is_revealed(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; number_of_bombs_in_neighborhood(cel)</span>
+<span class="sd">    0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;bomb&#39;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;hypothetic_bomb&#39;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;nbombs_neighborhood&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;hidden&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="is_bomb"><a class="viewcode-back" href="../cell.html#cell.is_bomb">[docs]</a><span class="k">def</span> <span class="nf">is_bomb</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param cell: a cell of a minesweeper&#39;s grid</span>
+<span class="sd">    :type cell: cell</span>
+<span class="sd">    :return:</span>
+<span class="sd">       * ``True`` if cell contains a bomb</span>
+<span class="sd">       * ``False`` otherwise</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    :UC: none</span>
+<span class="sd">    :Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; cel = make()</span>
+<span class="sd">    &gt;&gt;&gt; is_bomb(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;bomb&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="is_hypothetic_bomb"><a class="viewcode-back" href="../cell.html#cell.is_hypothetic_bomb">[docs]</a><span class="k">def</span> <span class="nf">is_hypothetic_bomb</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param cell: a cell of a minesweeper&#39;s grid</span>
+<span class="sd">    :type cell: cell</span>
+<span class="sd">    :return:</span>
+<span class="sd">       * ``True`` if cell is marked as containing a hypothetic bomb</span>
+<span class="sd">       * ``False`` otherwise</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    :UC: none</span>
+<span class="sd">    :Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; cel = make()</span>
+<span class="sd">    &gt;&gt;&gt; is_hypothetic_bomb(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;hypothetic_bomb&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="is_revealed"><a class="viewcode-back" href="../cell.html#cell.is_revealed">[docs]</a><span class="k">def</span> <span class="nf">is_revealed</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param cell: a cell of a minesweeper&#39;s grid</span>
+<span class="sd">    :type cell: cell</span>
+<span class="sd">    :return:</span>
+<span class="sd">       * ``True`` if cell is revealed</span>
+<span class="sd">       * ``False`` otherwise</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    :UC: none</span>
+<span class="sd">    :Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; cel = make()</span>
+<span class="sd">    &gt;&gt;&gt; is_revealed(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;hidden&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="number_of_bombs_in_neighborhood"><a class="viewcode-back" href="../cell.html#cell.number_of_bombs_in_neighborhood">[docs]</a><span class="k">def</span> <span class="nf">number_of_bombs_in_neighborhood</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param cell: a cell of a minesweeper&#39;s grid</span>
+<span class="sd">    :type cell: cell</span>
+<span class="sd">    :return: the number of bomb in the cell&#39;s neighborhood</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    :UC: none</span>
+<span class="sd">    :Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; cel = make()</span>
+<span class="sd">    &gt;&gt;&gt; number_of_bombs_in_neighborhood(cel)</span>
+<span class="sd">    0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;nbombs_neighborhood&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="reveal"><a class="viewcode-back" href="../cell.html#cell.reveal">[docs]</a><span class="k">def</span> <span class="nf">reveal</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param cell: a cell of a minesweeper&#39;s grid</span>
+<span class="sd">    :type cell: cell</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    :rtype: NoneType</span>
+<span class="sd">    :Side effect: set the state of cell cell as revealed</span>
+<span class="sd">    :UC: none</span>
+<span class="sd">    :Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; cel = make()</span>
+<span class="sd">    &gt;&gt;&gt; is_revealed(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; reveal(cel)</span>
+<span class="sd">    &gt;&gt;&gt; is_revealed(cel)</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;hidden&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+<span class="k">def</span> <span class="nf">set_bomb</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param cell: a cell of a minesweeper&#39;s grid</span>
+<span class="sd">    :type cell: cell</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    :rtype: NoneType</span>
+
+<span class="sd">    :Side effect: mark the cell as containing a bomb</span>
+<span class="sd">    :UC: none</span>
+<span class="sd">    :Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; cel = make()</span>
+<span class="sd">    &gt;&gt;&gt; is_bomb(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; set_bomb(cel)</span>
+<span class="sd">    &gt;&gt;&gt; is_bomb(cel)</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;bomb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="set_hypothetic"><a class="viewcode-back" href="../cell.html#cell.set_hypothetic">[docs]</a><span class="k">def</span> <span class="nf">set_hypothetic</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param cell: a cell of a minesweeper&#39;s grid</span>
+<span class="sd">    :type cell: cell</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    :rtype: NoneType</span>
+<span class="sd">    :Side effect: mark the cell as containing a (hypothetic) bomb</span>
+<span class="sd">    :UC: none</span>
+<span class="sd">    :Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; cel = make()</span>
+<span class="sd">    &gt;&gt;&gt; is_hypothetic_bomb(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; set_hypothetic(cel)</span>
+<span class="sd">    &gt;&gt;&gt; is_hypothetic_bomb(cel)</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_revealed</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+        <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;hypothetic_bomb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="unset_hypothetic"><a class="viewcode-back" href="../cell.html#cell.unset_hypothetic">[docs]</a><span class="k">def</span> <span class="nf">unset_hypothetic</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param cell: a cell of a minesweeper&#39;s grid</span>
+<span class="sd">    :type cell: cell</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    :rtype: NoneType</span>
+<span class="sd">    :Side effect: unmark the cell as containing a (hypothetic) bomb</span>
+<span class="sd">    :UC: none</span>
+<span class="sd">    :Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; cel = make()</span>
+<span class="sd">    &gt;&gt;&gt; is_hypothetic_bomb(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; set_hypothetic(cel)</span>
+<span class="sd">    &gt;&gt;&gt; is_hypothetic_bomb(cel)</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; unset_hypothetic(cel)</span>
+<span class="sd">    &gt;&gt;&gt; is_hypothetic_bomb(cel)</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_revealed</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+        <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;hypothetic_bomb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="set_number_of_bombs_in_neighborhood"><a class="viewcode-back" href="../cell.html#cell.set_number_of_bombs_in_neighborhood">[docs]</a><span class="k">def</span> <span class="nf">set_number_of_bombs_in_neighborhood</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">nb_bombs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param cell: a cell of a minesweeper&#39;s grid</span>
+<span class="sd">    :type cell: cell</span>
+<span class="sd">    :param nb_bombs: the number of bombs in the neighborhood of cell</span>
+<span class="sd">    :type nb_bombs: int</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    :rtype: NoneType</span>
+<span class="sd">    :Side effect: set the number bombs in the neighborhood of cell eqauls to nb_bombs</span>
+<span class="sd">    :UC: nb_bombs must be &gt;= 0</span>
+<span class="sd">    :Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; cel = make()</span>
+<span class="sd">    &gt;&gt;&gt; set_number_of_bombs_in_neighborhood(cel, 4)</span>
+<span class="sd">    &gt;&gt;&gt; number_of_bombs_in_neighborhood(cel)</span>
+<span class="sd">    4</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">nb_bombs</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;number of bombs must be &gt;= 0.&#39;</span>
+    <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;nbombs_neighborhood&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nb_bombs</span></div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html"> 0 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        ;<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"> <img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>. <a href="http://www.fil.univ-lille1.fr">2018, SAAL FATMA</a>.
+      Last updated on 13/10/2019.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

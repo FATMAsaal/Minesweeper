@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cell module &mdash;  0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title=" 0 documentation" href="index.html" />
+    <link rel="next" title="minesweeper module" href="minesweeper.html" />
+    <link rel="prev" title="minesweeper" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="minesweeper.html" title="minesweeper module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="minesweeper"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html"> 0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cell-module">
+<h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">cell</span></code> module<a class="headerlink" href="#cell-module" title="Permalink to this headline">¶</a></h1>
+<p>Ce module définit les fonctions permettant de</p>
+<ul class="simple">
+<li><p>créer une cellule (case) du jeu de démineur,</p></li>
+<li><p>accéder à quelques attributs d’une cellule,</p></li>
+<li><p>modifier quelques attributs d’une cellule.</p></li>
+</ul>
+<div class="section" id="constructeur">
+<h2>Constructeur<a class="headerlink" href="#constructeur" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>La fonction qui crée une cellule :</p>
+<dl class="function">
+<dt id="cell.make">
+<code class="sig-prename descclassname">cell.</code><code class="sig-name descname">make</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cell.html#make"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cell.make" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a new hidden cell of a minesweeper’s grid.
+existence of a bomb, number of bombs in neigh_borhood
+have to be stated later.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>cell</p>
+</dd>
+<dt class="field-odd">UC</dt>
+<dd class="field-odd"><p>none</p>
+</dd>
+<dt class="field-even">Examples</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cel</span> <span class="o">=</span> <span class="n">make</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_bomb</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_hypothetic_bomb</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_revealed</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">number_of_bombs_in_neighborhood</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</li>
+</ul>
+</div>
+<div class="section" id="predicats-et-selecteurs">
+<h2>Prédicats et sélecteurs<a class="headerlink" href="#predicats-et-selecteurs" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Une cellule peut contenir une bombe ou non.</p>
+<dl class="function">
+<dt id="cell.is_bomb">
+<code class="sig-prename descclassname">cell.</code><code class="sig-name descname">is_bomb</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cell.html#is_bomb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cell.is_bomb" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cell</strong> (<em>cell</em>) – a cell of a minesweeper’s grid</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if cell contains a bomb</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">UC</dt>
+<dd class="field-even"><p>none</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cel</span> <span class="o">=</span> <span class="n">make</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_bomb</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</li>
+<li><p>Une cellule peut être marquée par une bombe hypothétique ou non.</p>
+<dl class="function">
+<dt id="cell.is_hypothetic_bomb">
+<code class="sig-prename descclassname">cell.</code><code class="sig-name descname">is_hypothetic_bomb</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cell.html#is_hypothetic_bomb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cell.is_hypothetic_bomb" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cell</strong> (<em>cell</em>) – a cell of a minesweeper’s grid</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if cell is marked as containing a hypothetic bomb</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">UC</dt>
+<dd class="field-even"><p>none</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cel</span> <span class="o">=</span> <span class="n">make</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_hypothetic_bomb</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</li>
+<li><p>Une cellule peut être révélée ou non.</p>
+<dl class="function">
+<dt id="cell.is_revealed">
+<code class="sig-prename descclassname">cell.</code><code class="sig-name descname">is_revealed</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cell.html#is_revealed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cell.is_revealed" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cell</strong> (<em>cell</em>) – a cell of a minesweeper’s grid</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if cell is revealed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">UC</dt>
+<dd class="field-even"><p>none</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cel</span> <span class="o">=</span> <span class="n">make</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_revealed</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</li>
+<li><p>Une cellule possède un certain nombre de bombes dans son voisinage.</p>
+<dl class="function">
+<dt id="cell.number_of_bombs_in_neighborhood">
+<code class="sig-prename descclassname">cell.</code><code class="sig-name descname">number_of_bombs_in_neighborhood</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cell.html#number_of_bombs_in_neighborhood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cell.number_of_bombs_in_neighborhood" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cell</strong> (<em>cell</em>) – a cell of a minesweeper’s grid</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the number of bomb in the cell’s neighborhood</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">UC</dt>
+<dd class="field-even"><p>none</p>
+</dd>
+<dt class="field-odd">Examples</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cel</span> <span class="o">=</span> <span class="n">make</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">number_of_bombs_in_neighborhood</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</li>
+</ul>
+</div>
+<div class="section" id="modificateurs">
+<h2>Modificateurs<a class="headerlink" href="#modificateurs" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Pour révéler le contenu d’une cellule</p>
+<dl class="function">
+<dt id="cell.reveal">
+<code class="sig-prename descclassname">cell.</code><code class="sig-name descname">reveal</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cell.html#reveal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cell.reveal" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cell</strong> (<em>cell</em>) – a cell of a minesweeper’s grid</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>NoneType</p>
+</dd>
+<dt class="field-even">Side effect</dt>
+<dd class="field-even"><p>set the state of cell cell as revealed</p>
+</dd>
+<dt class="field-odd">UC</dt>
+<dd class="field-odd"><p>none</p>
+</dd>
+<dt class="field-even">Examples</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cel</span> <span class="o">=</span> <span class="n">make</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_revealed</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reveal</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_revealed</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</li>
+<li><p>Pour marquer une cellule comme contenant hypothétiquement une bombe.</p>
+<dl class="function">
+<dt id="cell.set_hypothetic">
+<code class="sig-prename descclassname">cell.</code><code class="sig-name descname">set_hypothetic</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cell.html#set_hypothetic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cell.set_hypothetic" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cell</strong> (<em>cell</em>) – a cell of a minesweeper’s grid</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>NoneType</p>
+</dd>
+<dt class="field-even">Side effect</dt>
+<dd class="field-even"><p>mark the cell as containing a (hypothetic) bomb</p>
+</dd>
+<dt class="field-odd">UC</dt>
+<dd class="field-odd"><p>none</p>
+</dd>
+<dt class="field-even">Examples</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cel</span> <span class="o">=</span> <span class="n">make</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_hypothetic_bomb</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_hypothetic</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_hypothetic_bomb</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</li>
+<li><p>Pour démarquer une cellule contenant hypothétiquement une bombe.</p>
+<dl class="function">
+<dt id="cell.unset_hypothetic">
+<code class="sig-prename descclassname">cell.</code><code class="sig-name descname">unset_hypothetic</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cell.html#unset_hypothetic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cell.unset_hypothetic" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cell</strong> (<em>cell</em>) – a cell of a minesweeper’s grid</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>NoneType</p>
+</dd>
+<dt class="field-even">Side effect</dt>
+<dd class="field-even"><p>unmark the cell as containing a (hypothetic) bomb</p>
+</dd>
+<dt class="field-odd">UC</dt>
+<dd class="field-odd"><p>none</p>
+</dd>
+<dt class="field-even">Examples</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cel</span> <span class="o">=</span> <span class="n">make</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_hypothetic_bomb</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_hypothetic</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_hypothetic_bomb</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unset_hypothetic</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_hypothetic_bomb</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</li>
+<li><p>Pour préciser le nombre de bombes dans le voisinage d’une cellule</p>
+<dl class="function">
+<dt id="cell.set_number_of_bombs_in_neighborhood">
+<code class="sig-prename descclassname">cell.</code><code class="sig-name descname">set_number_of_bombs_in_neighborhood</code><span class="sig-paren">(</span><em class="sig-param">cell</em>, <em class="sig-param">nb_bombs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cell.html#set_number_of_bombs_in_neighborhood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cell.set_number_of_bombs_in_neighborhood" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cell</strong> (<em>cell</em>) – a cell of a minesweeper’s grid</p></li>
+<li><p><strong>nb_bombs</strong> (<em>int</em>) – the number of bombs in the neighborhood of cell</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>NoneType</p>
+</dd>
+<dt class="field-even">Side effect</dt>
+<dd class="field-even"><p>set the number bombs in the neighborhood of cell eqauls to nb_bombs</p>
+</dd>
+<dt class="field-odd">UC</dt>
+<dd class="field-odd"><p>nb_bombs must be &gt;= 0</p>
+</dd>
+<dt class="field-even">Examples</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cel</span> <span class="o">=</span> <span class="n">make</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_number_of_bombs_in_neighborhood</span><span class="p">(</span><span class="n">cel</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">number_of_bombs_in_neighborhood</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cell</span></code> module</a><ul>
+<li><a class="reference internal" href="#constructeur">Constructeur</a></li>
+<li><a class="reference internal" href="#predicats-et-selecteurs">Prédicats et sélecteurs</a></li>
+<li><a class="reference internal" href="#modificateurs">Modificateurs</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">minesweeper</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="minesweeper.html"
+                        title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">minesweeper</span></code> module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/cell.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="minesweeper.html" title="minesweeper module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="minesweeper"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html"> 0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        ;<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"> <img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>. <a href="http://www.fil.univ-lille1.fr">2018, SAAL FATMA</a>.
+      Last updated on 13/10/2019.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>
